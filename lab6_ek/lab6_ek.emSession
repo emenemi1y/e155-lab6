@@ -1,0 +1,67 @@
+<!DOCTYPE CrossStudio_Session_File>
+<session>
+ <Bookmarks/>
+ <Breakpoints groups="Breakpoints" active_group="Breakpoints"/>
+ <ExecutionProfileWindow/>
+ <FrameBuffer/>
+ <Memory1/>
+ <Memory2/>
+ <Memory3/>
+ <Memory4/>
+ <Project>
+  <ProjectSessionItem path="lab6_ek"/>
+  <ProjectSessionItem path="lab6_ek;lab6_ek"/>
+  <ProjectSessionItem path="lab6_ek;lab6_ek;CMSIS Files"/>
+  <ProjectSessionItem path="lab6_ek;lab6_ek;lib"/>
+  <ProjectSessionItem path="lab6_ek;lab6_ek;Script Files"/>
+  <ProjectSessionItem path="lab6_ek;lab6_ek;Source Files"/>
+  <ProjectSessionItem path="lab6_ek;lab6_ek;System Files"/>
+ </Project>
+ <Register1/>
+ <Register2/>
+ <Register3/>
+ <Register4/>
+ <Threads>
+  <ThreadsWindow showLists=""/>
+ </Threads>
+ <TraceWindow>
+  <Trace enabled="Yes"/>
+ </TraceWindow>
+ <Watch1>
+  <Watches active="1" update="Never"/>
+ </Watch1>
+ <Watch2>
+  <Watches active="0" update="Never"/>
+ </Watch2>
+ <Watch3>
+  <Watches active="0" update="Never"/>
+ </Watch3>
+ <Watch4>
+  <Watches active="0" update="Never"/>
+ </Watch4>
+ <Files>
+  <SessionOpenFile windowGroup="DockEditLeft" x="4" y="90" useTextEdit="1" path="main.c" left="0" selected="1" top="61" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="19" y="1" useTextEdit="1" path="../../../Downloads/hmc-e155-main/hmc-e155-main/lab/lab06/lib/DS1722.c" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="../../../Downloads/hmc-e155-main/hmc-e155-main/lab/lab06/lib/DS1722.h" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="6" y="27" useTextEdit="1" path="../../../Downloads/hmc-e155-main/hmc-e155-main/lab/lab06/lib/STM32L432KC.h" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="../../../Downloads/hmc-e155-main/hmc-e155-main/lab/lab06/lib/STM32L432KC_FLASH.c" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="2" useTextEdit="1" path="../../../Downloads/hmc-e155-main/hmc-e155-main/lab/lab06/lib/STM32L432KC_FLASH.h" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="102" useTextEdit="1" path="../../../Downloads/hmc-e155-main/hmc-e155-main/lab/lab06/lib/STM32L432KC_GPIO.c" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="../../../Downloads/hmc-e155-main/hmc-e155-main/lab/lab06/lib/STM32L432KC_GPIO.h" left="0" top="73" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="../../../Downloads/hmc-e155-main/hmc-e155-main/lab/lab06/lib/STM32L432KC_RCC.c" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="109" y="38" useTextEdit="1" path="../../../Downloads/hmc-e155-main/hmc-e155-main/lab/lab06/lib/STM32L432KC_SPI.c" left="0" top="10" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="79" y="14" useTextEdit="1" path="../../../Downloads/hmc-e155-main/hmc-e155-main/lab/lab06/lib/STM32L432KC_SPI.h" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="3" useTextEdit="1" path="../../../Downloads/hmc-e155-main/hmc-e155-main/lab/lab06/lib/STM32L432KC_TIM.c" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="../../../Downloads/hmc-e155-main/hmc-e155-main/lab/lab06/lib/STM32L432KC_TIM.h" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="58" y="43" useTextEdit="1" path="../../../Downloads/hmc-e155-main/hmc-e155-main/lab/lab06/lib/STM32L432KC_USART.c" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="6" useTextEdit="1" path="../../../Downloads/hmc-e155-main/hmc-e155-main/lab/lab06/lib/STM32L432KC_USART.h" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="6" y="37" useTextEdit="1" path="../../../Downloads/hmc-e155-main/hmc-e155-main/lab/lab06/src/main.c" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="16" y="15" useTextEdit="1" path="../../../Downloads/hmc-e155-main/hmc-e155-main/lab/lab06/src/main.h" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="../../../Downloads/hmc-e155-main/hmc-e155-main/lab/lab06/lib/STM32L432KC_RCC.h" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="main.h" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="STM32L432KC.h" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="DS1722.c" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="18" y="10918" useTextEdit="1" path="STM32L4xx/Device/Include/stm32l432xx.h" left="0" top="10896" codecName="Default"/>
+ </Files>
+ <EMStudioWindow activeProject="lab6_ek" fileDialogDefaultFilter="*.c" autoConnectTarget="J-Link" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="C:/Users/ekendrick/Documents/SEGGER Embedded Studio Projects/lab6_ek" debugSearchPath="" autoConnectCapabilities="3199"/>
+</session>

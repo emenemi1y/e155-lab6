@@ -12,5 +12,7 @@
 
 #define LED_PIN PB3 // LED pin for blinking on Port B pin 3
 #define BUFF_LEN 32
+#define CPHA 1 // CPHA must be set to 1
+#define DELAY_TIM TIM15
 
 #endif // MAIN_H

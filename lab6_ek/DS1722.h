@@ -1,5 +1,32 @@
 // DS1722.h
-// TODO: <YOUR NAME>
-// TODO: <YOUR EMAIL>
-// TODO: <DATE>
-// TODO: <SHORT DESCRIPTION OF WHAT THIS FILE DOES>
+// Emily Kendrick
+// ekendrick@hmc.edu
+// 10/19/2025
+// Header file for the DS1722 temperature sensor
+
+#ifndef DS1722_H
+#define DS1722_H
+
+#include <stdint.h> 
+#include <stm32l432xx.h>
+#include "STM32L432KC_SPI.h"
+
+///////////////////////////////////////////////////////////////////////////////
+// Definitions
+///////////////////////////////////////////////////////////////////////////////
+
+#define TEMP_LSB 0x01
+#define TEMP_MSB 0x02
+#define WRITE_ADR 0x80
+
+///////////////////////////////////////////////////////////////////////////////
+// Function prototypes
+///////////////////////////////////////////////////////////////////////////////
+
+void tempSetup(void);
+void setResolution(int res);
+int tempRead(void);
+int convertTemp(int bits);
+
+#endif
+

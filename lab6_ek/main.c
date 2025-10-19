@@ -68,6 +68,7 @@ int main(void) {
   // TODO: Add SPI initialization code
 
   while(1) {
+
     /* Wait for ESP8266 to send a request.
     Requests take the form of '/REQ:<tag>\n', with TAG begin <= 10 characters.
     Therefore the request[] array must be able to contain 18 characters.

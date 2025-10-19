@@ -88,6 +88,17 @@ void pinMode(int gpio_pin, int function) {
 	}
 }
 
+void gpioAFSel(int gpio_pin, int af_val) {
+  // Get pointer to base address of the corresponding GPIO pin and pin offset
+  GPIO_TypeDef * GPIO_PORT_PTR = gpioPinToBase(gpio_pin);
+  int pin_offset = gpioPinOffset(gpio_pin);
+
+  int afsel_offset = pin_offset * 4;
+
+  GPIO_PORT_PTR->AFR[0] |= (af_val << afsel_offset);
+
+}
+
 int digitalRead(int gpio_pin) {
 	// Get pointer to base address of the corresponding GPIO pin and pin offset
 	GPIO_TypeDef * GPIO_PORT_PTR = gpioPinToBase(gpio_pin);

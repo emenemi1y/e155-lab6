@@ -22,6 +22,12 @@ char* webpageStart = "<!DOCTYPE html><html><head><title>E155 Web Server Demo Web
 	<body><h1>E155 Web Server Demo Webpage</h1>";
 char* ledStr = "<p>LED Control:</p><form action=\"ledon\"><input type=\"submit\" value=\"Turn the LED on!\"></form>\
 	<form action=\"ledoff\"><input type=\"submit\" value=\"Turn the LED off!\"></form>";
+char* tempStr = "<p>Temperature Measurement:</p>";
+char* tempRes = "<p>Temperature Resolution:</p><form action=\"8bit\"><input type=\"submit\" value=\"1.0&deg;C\"></form>\
+        </p><form action=\"9bit\"><input type=\"submit\" value=\"0.5&deg;C\"></form>\
+        </p><form action=\"10bit\"><input type=\"submit\" value=\"0.25&deg;C\"></form>\
+        </p><form action=\"11bit\"><input type=\"submit\" value=\"0.125&deg;C\"></form>\
+        </p><form action=\"12bit\"><input type=\"submit\" value=\"0.0625&deg;C\"></form>";
 char* webpageEnd   = "</body></html>";
 
 //determines whether a given character sequence is in a char array request, returning 1 if present, -1 if not present
@@ -46,6 +52,33 @@ int updateLEDStatus(char request[])
 	return led_status;
 }
 
+int updateResolution(char request[])
+{
+        int res_status = 0;
+        // The request has been received. Now process to determine what to change the resolution to.
+        if (inString(request, "8bit")==1){
+          setResolution(8);
+          res_status = 8;
+        }
+        else if (inString(request, "9bit")==1){
+          setResolution(9);
+          res_status = 9;
+        }
+        else if (inString(request, "10bit")==1){
+          setResolution(10);
+          res_status = 10;
+        }
+        else if (inString(request, "11bit")==1){
+          setResolution(11);
+          res_status = 11;
+        }
+        else if (inString(request, "12bit")==1){
+          setResolution(12);
+          res_status = 12;
+        }
+
+}
+
 /////////////////////////////////////////////////////////////////
 // Solution Functions
 /////////////////////////////////////////////////////////////////
@@ -65,7 +98,9 @@ int main(void) {
   
   USART_TypeDef * USART = initUSART(USART1_ID, 125000);
 
-  // TODO: Add SPI initialization code
+  // SPI initialization code 
+  initSPI(2, 0, CPHA); 
+  tempSetup();
 
   while(1) {
 
@@ -85,10 +120,9 @@ int main(void) {
       request[charIndex++] = readChar(USART);
     }
 
-    // TODO: Add SPI code here for reading temperature
-
-
-
+    // Read temperature
+    int sensor_reading = tempRead();
+    float temp = convertTemp(sensor_reading);
 
   
     // Update string with current LED state

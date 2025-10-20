@@ -75,13 +75,14 @@ int tempRead(void){
 
 }
 
-int convertTemp(int bits) {
-  int temp = 0;
+float convertTemp(int bits) {
+  float temp = 0;
   // Iterate through each bit from the temperature sensor output 
   for (int i = 0; i < 16; i++) {
     int bit = ((bits >> i) & 1);
     if (i == 16 && bit) temp -= pow(2, -7);
     else if (bit) temp += pow(2, (i - 9));
   }
-
+  
+  return temp;
 }

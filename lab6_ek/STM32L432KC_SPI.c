@@ -1,8 +1,8 @@
 // STM32L432KC_SPI.c
-// TODO: <YOUR NAME>
-// TODO: <YOUR EMAIL>
-// TODO: <DATE>
-// TODO: <SHORT DESCRIPTION OF WHAT THIS FILE DOES>
+// Emily Kendrick
+// ekendrick@hmc.edu
+// 10/19/2025
+// Function definitions for SPI peripheral
 
 #include "STM32L432KC_SPI.h"
 #include "STM32L432KC_RCC.h"
@@ -15,7 +15,7 @@
  *          1: data changed on leading edge of clk and captured on next edge)
  * Refer to the datasheet for more low-level details. */ 
 
-void initSPI(int br, int cpol, int cpha, int res){
+void initSPI(int br, int cpol, int cpha){
 
   // Enable system clock for SPI3
   RCC->APB1ENR1 |= RCC_APB1ENR1_SPI3EN;

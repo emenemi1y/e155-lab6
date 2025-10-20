@@ -26,7 +26,7 @@
 void tempSetup(void);
 void setResolution(int res);
 int tempRead(void);
-int convertTemp(int bits);
+float convertTemp(int bits);
 
 #endif
 

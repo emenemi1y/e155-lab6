@@ -16,10 +16,10 @@ void tempSetup(void){
   digitalWrite(SPI_CE, PIO_HIGH);
 
   // Write "write address" to temperature sensor
-  spiSendReceive(WRITE_ADR);
+  int trash = spiSendReceive(0b10000100);
 
   // Send configuration register settings 
-  spiSendReceive(0b11100000);
+  trash = spiSendReceive(0b11100000);
 
   // Disable CE
   digitalWrite(SPI_CE, PIO_LOW);
@@ -48,25 +48,25 @@ int tempRead(void){
   digitalWrite(SPI_CE, PIO_HIGH);
 
   // Write the MSB address to the temperature sensor and ignore returned value
-  spiSendReceive(TEMP_MSB);
+  int trash = spiSendReceive(0b00000010);
 
   // Read returned temperature result
-  int MSB = spiSendReceive(0x00);
+  int MSB = spiSendReceive(0b00000000);
 
   // Disable CE 
   digitalWrite(SPI_CE, PIO_LOW);
   
-  delay_millis(TIM15, 1);
+  // delay_millis(TIM15, 1);
 
   // Read LSB:
   // Set CE high
   digitalWrite(SPI_CE, PIO_HIGH);
 
   // Write the LSB address to the temperature sensor and ignore returned value
-  spiSendReceive(TEMP_LSB);
+  trash = spiSendReceive(0b00000001);
 
   // Read returned temperature result
-  int LSB = spiSendReceive(0x00);
+  int LSB = spiSendReceive(0b00000000);
 
   // Disable CE
   digitalWrite(SPI_CE, PIO_LOW);  

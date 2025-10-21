@@ -16,10 +16,10 @@ Date: 9/14/19
 /////////////////////////////////////////////////////////////////
 
 //Defining the web page in two chunks: everything before the current time, and everything after the current time
-char* webpageStart = "<!DOCTYPE html><html><head><title>E155 Web Server Demo Webpage</title>\
+char* webpageStart = "<!DOCTYPE html><html><head><title>E155 Lab 6</title>\
 	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\
 	</head>\
-	<body><h1>E155 Web Server Demo Webpage</h1>";
+	<body><h1>E155 Lab 6</h1>";
 char* ledStr = "<p>LED Control:</p><form action=\"ledon\"><input type=\"submit\" value=\"Turn the LED on!\"></form>\
 	<form action=\"ledoff\"><input type=\"submit\" value=\"Turn the LED off!\"></form>";
 char* tempStr = "<p>Temperature Measurement:</p>";
@@ -38,7 +38,7 @@ int inString(char request[], char des[]) {
 
 int updateLEDStatus(char request[])
 {
-	int led_status = 0;
+        int led_status = 0;
 	// The request has been received. now process to determine whether to turn the LED on or off
 	if (inString(request, "ledoff")==1) {
 		digitalWrite(LED_PIN, PIO_LOW);
@@ -76,6 +76,7 @@ int updateResolution(char request[])
           setResolution(12);
           res_status = 12;
         }
+        return res_status;
 
 }
 
@@ -91,16 +92,20 @@ int main(void) {
   gpioEnable(GPIO_PORT_B);
   gpioEnable(GPIO_PORT_C);
 
-  pinMode(PB3, GPIO_OUTPUT);
-  
-  RCC->APB2ENR |= (RCC_APB2ENR_TIM15EN);
+  RCC->APB2ENR |= RCC_APB2ENR_TIM15EN;
   initTIM(TIM15);
+
+  pinMode(LED_PIN, GPIO_OUTPUT);
+  digitalWrite(LED_PIN,0);
   
   USART_TypeDef * USART = initUSART(USART1_ID, 125000);
 
   // SPI initialization code 
-  initSPI(2, 0, CPHA); 
+  initSPI(0b110, 0, CPHA); 
   tempSetup();
+
+  int res_status = 9;
+  int led_status_init = 0;
 
   while(1) {
 
@@ -110,34 +115,65 @@ int main(void) {
     */
 
     // Receive web request from the ESP
+    
     char request[BUFF_LEN] = "                  "; // initialize to known value
     int charIndex = 0;
-  
+    /*
     // Keep going until you get end of line character
     while(inString(request, "\n") == -1) {
       // Wait for a complete request to be transmitted before processing
       while(!(USART->ISR & USART_ISR_RXNE));
       request[charIndex++] = readChar(USART);
-    }
+    } */
+    
 
     // Read temperature
     int sensor_reading = tempRead();
-    float temp = convertTemp(sensor_reading);
+    //float temp = convertTemp(sensor_reading);
 
   
     // Update string with current LED state
-  
-    int led_status = updateLEDStatus(request);
-
+    // int led_status = updateLEDStatus(request);
+    
+    /*
+    if(led_status == 2)
+      led_status = led_status_init;
+    else
+      led_status_init = led_status;
+    */
+    /*
     char ledStatusStr[20];
     if (led_status == 1)
       sprintf(ledStatusStr,"LED is on!");
     else if (led_status == 0)
       sprintf(ledStatusStr,"LED is off!");
+    */
+    /*
+    // Update string with current resolution state
+    int new_res_status = updateResolution(request);
+    if (new_res_status == 0) 
+        new_res_status = res_status;
+    else 
+        res_status = new_res_status;
 
+    char resStatusStr[22];
+
+    if (res_status == 8) sprintf(resStatusStr, "Resolution: 1.0°C");
+    else if (res_status == 9) sprintf(resStatusStr, "Resolution: 0.5°C");
+    else if (res_status == 10) sprintf(resStatusStr, "Resolution: 0.25°C");
+    else if (res_status == 11) sprintf(resStatusStr, "Resolution: 0.125°C");
+    else if (res_status == 12) sprintf(resStatusStr, "Resolution: 0.0625°C");
+    */
+    /*
+    // Temperature string
+    char tempString[20];
+    //sprintf(tempString, "Temp: %.4f°C", temp);
+    
+    
     // finally, transmit the webpage over UART
     sendString(USART, webpageStart); // webpage header code
     sendString(USART, ledStr); // button for controlling LED
+    //sendString(USART, tempRes); // button for controlling resolution
 
     sendString(USART, "<h2>LED Status</h2>");
 
@@ -145,8 +181,21 @@ int main(void) {
     sendString(USART, "<p>");
     sendString(USART, ledStatusStr);
     sendString(USART, "</p>");
+    
+    
+    sendString(USART, "<h2>Temperature Resolution</h2>");
+    sendString(USART, "<p>");
+    //sendString(USART, resStatusStr);
+    sendString(USART, "</p>");
+    
+
+    sendString(USART, "<h2>Temperature Measurement</h2>");
+    sendString(USART, "<p>");
+    //sendString(USART, tempString);
+    sendString(USART, "</p>");
 
   
     sendString(USART, webpageEnd);
+    */
   }
 }

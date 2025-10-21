@@ -15,10 +15,10 @@
  *          1: data changed on leading edge of clk and captured on next edge)
  * Refer to the datasheet for more low-level details. */ 
 
-void initSPI(int br, int cpol, int cpha){
+void   initSPI(int br, int cpol, int cpha){
 
   // Enable system clock for SPI3
-  RCC->APB1ENR1 |= RCC_APB1ENR1_SPI3EN;
+  RCC->APB2ENR |= RCC_APB2ENR_SPI1EN;
 
   // Configure GPIO pins for SPI3
   // Set to alternate function mode
@@ -31,22 +31,25 @@ void initSPI(int br, int cpol, int cpha){
   GPIOB->OSPEEDR |= (GPIO_OSPEEDR_OSPEED3);
 
   // Set to AF06 for SPI alternate functions 
-  GPIOB->AFR[0] |= _VAL2FLD(GPIO_AFRL_AFSEL3, 6);
-  GPIOB->AFR[0] |= _VAL2FLD(GPIO_AFRL_AFSEL4, 6);
-  GPIOB->AFR[0] |= _VAL2FLD(GPIO_AFRL_AFSEL5, 6);
+  GPIOB->AFR[0] |= _VAL2FLD(GPIO_AFRL_AFSEL3, 5);
+  GPIOB->AFR[0] |= _VAL2FLD(GPIO_AFRL_AFSEL4, 5);
+  GPIOB->AFR[0] |= _VAL2FLD(GPIO_AFRL_AFSEL5, 5);
 
   // Set the baud rate 
-  SPI3->CR1 |= _VAL2FLD(SPI_CR1_BR, br);
+  SPI1->CR1 |= _VAL2FLD(SPI_CR1_BR, br);
 
   // Set to controller configuration
-  SPI3->CR1 |= SPI_CR1_MSTR;
+  SPI1->CR1 |= SPI_CR1_MSTR;
 
-  SPI3->CR1 |= _VAL2FLD(SPI_CR1_CPOL, cpol); // Polarity
-  SPI3->CR1 |= _VAL2FLD(SPI_CR1_CPHA, cpha); // Phase
-  SPI3->CR2 |= _VAL2FLD(SPI_CR2_DS, 0b0111); // Data length for transfer
+  // SPI1->CR1 &= ~(SPI_CR1_CPOL | SPI_CR1_CPHA | SPI_CR1_LSBFIRST | SPI_CR1_SSM);
+
+  SPI1->CR1 |= _VAL2FLD(SPI_CR1_CPOL, cpol); // Polarity
+  SPI1->CR1 |= _VAL2FLD(SPI_CR1_CPHA, cpha); // Phase
+  SPI1->CR2 |= _VAL2FLD(SPI_CR2_DS, 0b0111); // Data length for transfer
+  SPI1->CR2 |= (SPI_CR2_FRXTH | SPI_CR2_SSOE);
 
   // Enable SPI
-  SPI3->CR1 |= (SPI_CR1_SPE);
+  SPI1->CR1 |= (SPI_CR1_SPE);
 
 }
 
@@ -56,9 +59,9 @@ void initSPI(int br, int cpol, int cpha){
  *    -- return: the character received over SPI */
 
 char spiSendReceive(char send){
-  while(!(SPI3->SR & SPI_SR_TXE)); // Wait until the transmit buffer is empty
-  *(volatile char *) (&SPI3->DR) = send;  // Trasnsmit the character over SPI
-  while(!(SPI3->SR & SPI_SR_RXNE)); // Wait until data has been received
-  char rec = (volatile char) SPI3->DR;
+  while(!(SPI1->SR & SPI_SR_TXE)); // Wait until the transmit buffer is empty
+  *(volatile char *) (&SPI1->DR) = send;  // Trasnsmit the character over SPI
+  while(!(SPI1->SR & SPI_SR_RXNE)); // Wait until data has been received
+  char rec = (volatile char) SPI1->DR;
   return rec; // Return received character
 }

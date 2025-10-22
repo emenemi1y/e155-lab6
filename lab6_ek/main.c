@@ -102,7 +102,7 @@ int main(void) {
 
   // SPI initialization code 
   initSPI(0b100, 0, CPHA); 
-  tempSetup();
+  //tempSetup();
 
   int res_status = 9;
   int led_status_init = 0;
@@ -164,12 +164,12 @@ int main(void) {
     else if (res_status == 11) sprintf(resStatusStr, "Resolution: 0.125°C");
     else if (res_status == 12) sprintf(resStatusStr, "Resolution: 0.0625°C");
     */
-    /*
+    
     // Temperature string
     char tempString[20];
     //sprintf(tempString, "Temp: %.4f°C", temp);
     
-    
+    /*
     // finally, transmit the webpage over UART
     sendString(USART, webpageStart); // webpage header code
     sendString(USART, ledStr); // button for controlling LED

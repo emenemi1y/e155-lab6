@@ -12,6 +12,7 @@ Adapted from Prof Brake's Lab 6 starter code
 #include <stdio.h>
 #include "main.h"
 
+// For printf
 int _write(int file, char *ptr, int len) {
   int i = 0;
   for (i = 0; i < len; i++){
@@ -45,6 +46,7 @@ int inString(char request[], char des[]) {
 	return -1;
 }
 
+// Updates the LED power and status variable
 int updateLEDStatus(char request[])
 {
         int led_status = 2;
@@ -61,6 +63,7 @@ int updateLEDStatus(char request[])
 	return led_status;
 }
 
+// Updates the resolution of the temperature sensor.
 int updateResolution(char request[])
 {
         int res_status = 0;
@@ -96,14 +99,17 @@ int updateResolution(char request[])
 int main(void) {
   configureFlash();
   configureClock();
-
+  
+  // Enable GPIO
   gpioEnable(GPIO_PORT_A);
   gpioEnable(GPIO_PORT_B);
   gpioEnable(GPIO_PORT_C);
-
+  
+  // Enable Timer 15
   RCC->APB2ENR |= RCC_APB2ENR_TIM15EN;
   initTIM(TIM15);
-
+  
+  // Set up LED pin
   pinMode(LED_PIN, GPIO_OUTPUT);
   digitalWrite(LED_PIN, 0);
   
@@ -112,7 +118,8 @@ int main(void) {
   // SPI initialization code 
   initSPI(0b100, 0, CPHA); 
   tempSetup();
-
+  
+  // Initial resolution and LED statuses upon boot-up
   int res_status = 9;
   int led_status_init = 0;
 
@@ -123,7 +130,6 @@ int main(void) {
     */
     
     // Receive web request from the ESP
-    
     char request[BUFF_LEN] = "                  "; // initialize to known value
     int charIndex = 0;
     
@@ -134,16 +140,13 @@ int main(void) {
       request[charIndex++] = readChar(USART);
     } 
     
-  
-    // Update string with current LED state
+    // Update LED status 
     int led_status = updateLEDStatus(request);
-    
     
     if(led_status == 2)
       led_status = led_status_init;
     else
       led_status_init = led_status;
-    
     
     char ledStatusStr[20];
     if (led_status == 1)
@@ -152,7 +155,7 @@ int main(void) {
       sprintf(ledStatusStr,"LED is off!");
     
     
-    // Update string with current resolution state
+    // Update resolution status 
     int new_res_status = updateResolution(request);
     if (new_res_status == 0) 
         new_res_status = res_status;
@@ -161,7 +164,8 @@ int main(void) {
 
     volatile int sensor_reading = tempRead();
     float temp = convertTemp(sensor_reading);
-
+    
+    // Resolution status string
     char resStatusStr[28];
     char tempString[20];
     if (res_status == 8) {
@@ -193,24 +197,20 @@ int main(void) {
 
     sendString(USART, "<h2>LED Status</h2>");
 
-
     sendString(USART, "<p>");
     sendString(USART, ledStatusStr);
     sendString(USART, "</p>");
-    
     
     sendString(USART, "<h2>Temperature Resolution</h2>");
     sendString(USART, "<p>");
     sendString(USART, resStatusStr);
     sendString(USART, "</p>");
-    
-
+  
     sendString(USART, "<h2>Temperature Measurement</h2>");
     sendString(USART, "<p>");
     sendString(USART, tempString);
     sendString(USART, "</p>");
 
-  
     sendString(USART, webpageEnd);
     
   }

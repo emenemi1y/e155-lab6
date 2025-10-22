@@ -58,20 +58,21 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="44" y="5" useTextEdit="1" folds0="14,42" path="main.c" left="0" selected="1" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="18" y="40" useTextEdit="1" folds0="15" path="main.c" left="0" top="0" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="17" useTextEdit="1" path="main.h" left="0" top="0" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="41" y="28" useTextEdit="1" path="STM32L432KC.h" left="0" top="0" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="18" y="12" useTextEdit="1" path="STM32L432KC_SPI.h" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="121" useTextEdit="1" path="STM32L432KC_GPIO.c" left="0" top="90" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="121" useTextEdit="1" path="STM32L432KC_GPIO.c" left="0" top="85" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="83" useTextEdit="1" path="STM32L432KC_GPIO.h" left="0" top="49" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="24" y="7262" useTextEdit="1" path="STM32L4xx/Device/Include/stm32l432xx.h" left="0" top="7251" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="8" y="18" useTextEdit="1" path="DS1722.h" left="0" top="12" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="8" y="18" useTextEdit="1" path="DS1722.h" left="0" top="0" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="48" y="16" useTextEdit="1" path="STM32L432KC_TIM.h" left="0" top="0" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="16" y="18" useTextEdit="1" path="STM32L432KC_TIM.c" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="17" useTextEdit="1" path="DS1722.c" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="50" y="72" useTextEdit="1" path="DS1722.c" left="0" top="0" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="STM32L432KC_USART.h" left="0" top="0" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="STM32L432KC_USART.c" left="0" top="45" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="5" y="18" useTextEdit="1" path="STM32L432KC_SPI.c" left="0" top="18" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="17" useTextEdit="1" path="STM32L432KC_SPI.c" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="20" y="164" useTextEdit="1" path="AI_prototype.c" left="0" selected="1" top="132" codecName="Default"/>
  </Files>
  <EMStudioWindow activeProject="lab6_ek" fileDialogDefaultFilter="*.c" autoConnectTarget="J-Link" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="C:/Users/ekendrick/Documents/tutorial-esp8266-click-webserver-main/SEGGER_proj" debugSearchPath="" autoConnectCapabilities="3711"/>
 </session>

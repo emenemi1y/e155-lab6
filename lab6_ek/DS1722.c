@@ -41,7 +41,7 @@ void setResolution(int res) {
   digitalWrite(SPI_CE, PIO_LOW);
 }
 
-
+// Gets a temperature reading from the temperature sensor
 int tempRead(void){
   
   // Read MSB: 
@@ -65,13 +65,12 @@ int tempRead(void){
   int LSB = spiSendReceive(0x00);
   // Disable CE
   digitalWrite(SPI_CE, PIO_LOW);  
-
-  
+ 
   return ((MSB << 8) | (LSB));
-
 
 }
 
+// Convert a 16 bit temperature to degrees Celsius
 float convertTemp(int bits) {
   float temp = 0;
   // Iterate through each bit from the temperature sensor output 

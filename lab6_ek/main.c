@@ -101,7 +101,7 @@ int main(void) {
   USART_TypeDef * USART = initUSART(USART1_ID, 125000);
 
   // SPI initialization code 
-  initSPI(0b110, 0, CPHA); 
+  initSPI(0b100, 0, CPHA); 
   tempSetup();
 
   int res_status = 9;
@@ -124,16 +124,16 @@ int main(void) {
       // Wait for a complete request to be transmitted before processing
       while(!(USART->ISR & USART_ISR_RXNE));
       request[charIndex++] = readChar(USART);
-    } */
-    
+    } 
+    */
 
     // Read temperature
-    int sensor_reading = tempRead();
+    volatile int sensor_reading = tempRead();
     //float temp = convertTemp(sensor_reading);
 
   
     // Update string with current LED state
-    // int led_status = updateLEDStatus(request);
+    //int led_status = updateLEDStatus(request);
     
     /*
     if(led_status == 2)

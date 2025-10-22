@@ -14,4 +14,5 @@ Output/Debug/Obj/lab6_ek/STM32L432KC_SPI.o: \
   C:\Users\ekendrick\Documents\GitHub\e155-lab6\lab6_ek\CMSIS_5\CMSIS\Core\Include\mpu_armv7.h \
   C:\Users\ekendrick\Documents\GitHub\e155-lab6\lab6_ek\STM32L4xx\Device\Include\system_stm32l4xx.h \
   C:\Users\ekendrick\Documents\GitHub\e155-lab6\lab6_ek\STM32L432KC_RCC.h \
-  C:\Users\ekendrick\Documents\GitHub\e155-lab6\lab6_ek\STM32L432KC_GPIO.h
+  C:\Users\ekendrick\Documents\GitHub\e155-lab6\lab6_ek\STM32L432KC_GPIO.h \
+  C:\Program\ Files\SEGGER\SEGGER\ Embedded\ Studio\ 8.24\include\stdio.h

@@ -7,6 +7,7 @@
 #include "STM32L432KC_SPI.h"
 #include "STM32L432KC_RCC.h"
 #include "STM32L432KC_GPIO.h"
+#include <stdio.h>
 
 /* Enables the SPI peripheral and intializes its clock speed (baud rate), polarity, and phase.
  *    -- br: (0b000 - 0b111). The SPI clk will be the master clock / 2^(BR+1).
@@ -15,22 +16,24 @@
  *          1: data changed on leading edge of clk and captured on next edge)
  * Refer to the datasheet for more low-level details. */ 
 
-void   initSPI(int br, int cpol, int cpha){
+void initSPI(int br, int cpol, int cpha){
 
-  // Enable system clock for SPI3
+  // Enable system clock for SPI1
   RCC->APB2ENR |= RCC_APB2ENR_SPI1EN;
 
   // Configure GPIO pins for SPI3
   // Set to alternate function mode
-  pinMode(SPI_SCK, GPIO_ALT);     // SPI3_SCK
-  pinMode(SPI_MISO, GPIO_ALT);    // SPI3_MISO
-  pinMode(SPI_MOSI, GPIO_ALT);    // SPI3_MOSI
+  pinMode(SPI_SCK, GPIO_ALT);     // SPI1_SCK
+  pinMode(SPI_MISO, GPIO_ALT);    // SPI1_MISO
+  pinMode(SPI_MOSI, GPIO_ALT);    // SPI1_MOSI
   pinMode(SPI_CE, GPIO_OUTPUT);   // Manual CS
 
   // Set output speed type to high for SCK
-  GPIOB->OSPEEDR |= (GPIO_OSPEEDR_OSPEED3);
+  GPIOB->OSPEEDR |= (0b11 << GPIO_OSPEEDR_OSPEED3_Pos);
+  GPIOB->OSPEEDR |= (0b11 << GPIO_OSPEEDR_OSPEED4_Pos);
+  GPIOB->OSPEEDR |= (0b11 << GPIO_OSPEEDR_OSPEED5_Pos);
 
-  // Set to AF06 for SPI alternate functions 
+  // Set to AF05 for SPI alternate functions 
   GPIOB->AFR[0] |= _VAL2FLD(GPIO_AFRL_AFSEL3, 5);
   GPIOB->AFR[0] |= _VAL2FLD(GPIO_AFRL_AFSEL4, 5);
   GPIOB->AFR[0] |= _VAL2FLD(GPIO_AFRL_AFSEL5, 5);
@@ -41,7 +44,7 @@ void   initSPI(int br, int cpol, int cpha){
   // Set to controller configuration
   SPI1->CR1 |= SPI_CR1_MSTR;
 
-  // SPI1->CR1 &= ~(SPI_CR1_CPOL | SPI_CR1_CPHA | SPI_CR1_LSBFIRST | SPI_CR1_SSM);
+  SPI1->CR1 &= ~(SPI_CR1_CPOL | SPI_CR1_CPHA | SPI_CR1_LSBFIRST | SPI_CR1_SSM);
 
   SPI1->CR1 |= _VAL2FLD(SPI_CR1_CPOL, cpol); // Polarity
   SPI1->CR1 |= _VAL2FLD(SPI_CR1_CPHA, cpha); // Phase
@@ -49,7 +52,7 @@ void   initSPI(int br, int cpol, int cpha){
   SPI1->CR2 |= (SPI_CR2_FRXTH | SPI_CR2_SSOE);
 
   // Enable SPI
-  SPI1->CR1 |= (SPI_CR1_SPE);
+  SPI1->CR1 |= SPI_CR1_SPE;
 
 }
 
@@ -61,7 +64,9 @@ void   initSPI(int br, int cpol, int cpha){
 char spiSendReceive(char send){
   while(!(SPI1->SR & SPI_SR_TXE)); // Wait until the transmit buffer is empty
   *(volatile char *) (&SPI1->DR) = send;  // Trasnsmit the character over SPI
+  
   while(!(SPI1->SR & SPI_SR_RXNE)); // Wait until data has been received
   char rec = (volatile char) SPI1->DR;
+
   return rec; // Return received character
 }

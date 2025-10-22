@@ -28,7 +28,7 @@
   <ProjectSessionItem path="lab6_ek;lab6_ek;System Files"/>
  </Project>
  <Register1>
-  <RegisterWindow invisibleNodes="" visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;CPU/r0;CPU/r1;CPU/r2;CPU/r3;CPU/r4;CPU/r5;CPU/r6;CPU/r7;CPU/r8;CPU/r9;CPU/r10;CPU/r11;CPU/r12;CPU/sp(r13);CPU/lr(r14);CPU/pc(r15);CPU/xpsr;CPU/MSP;CPU/PSP;CPU/PRIMASK;CPU/BASEPRI;CPU/FAULTMASK;CPU/CONTROL;CPU/internal;GPIOB/MODER;GPIOB/OTYPER;GPIOB/OSPEEDR;GPIOB/PUPDR;GPIOB/IDR;GPIOB/ODR;GPIOB/BSRR;GPIOB/LCKR;GPIOB/AFRL;GPIOB/AFRH;RCC/CR;RCC/ICSCR;RCC/CFGR;RCC/PLLCFGR;RCC/PLLSAI1CFGR;RCC/CIER;RCC/CIFR;RCC/CICR;RCC/AHB1RSTR;RCC/AHB2RSTR;RCC/AHB3RSTR;RCC/APB1RSTR1;RCC/APB1RSTR2;RCC/APB2RSTR;RCC/AHB1ENR;RCC/AHB2ENR;RCC/AHB3ENR;RCC/APB1ENR1;RCC/APB1ENR2;RCC/APB2ENR;RCC/AHB1SMENR;RCC/AHB2SMENR;RCC/AHB3SMENR;RCC/APB1SMENR1;RCC/APB1SMENR2;RCC/APB2SMENR;RCC/CCIPR;RCC/BDCR;RCC/CSR;RCC/CRRCR;SPI1/CR1;SPI1/CR2;SPI1/SR;SPI1/DR;SPI1/CRCPR;SPI1/RXCRCR;SPI1/TXCRCR" binaryNodes="" asciiNodes="" openNodes="CPU - Current Context;GPIOB;GPIOB/MODER;GPIOB/OSPEEDR;GPIOB/AFRL;RCC;SPI1" name="lab6_ek_Debug" decimalNodes="" octalNodes="" unsignedNodes=""/>
+  <RegisterWindow invisibleNodes="" visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;CPU/r0;CPU/r1;CPU/r2;CPU/r3;CPU/r4;CPU/r5;CPU/r6;CPU/r7;CPU/r8;CPU/r9;CPU/r10;CPU/r11;CPU/r12;CPU/sp(r13);CPU/lr(r14);CPU/pc(r15);CPU/xpsr;CPU/MSP;CPU/PSP;CPU/PRIMASK;CPU/BASEPRI;CPU/FAULTMASK;CPU/CONTROL;CPU/internal;GPIOB/MODER;GPIOB/OTYPER;GPIOB/OSPEEDR;GPIOB/PUPDR;GPIOB/IDR;GPIOB/ODR;GPIOB/BSRR;GPIOB/LCKR;GPIOB/AFRL;GPIOB/AFRH;RCC/CR;RCC/ICSCR;RCC/CFGR;RCC/PLLCFGR;RCC/PLLSAI1CFGR;RCC/CIER;RCC/CIFR;RCC/CICR;RCC/AHB1RSTR;RCC/AHB2RSTR;RCC/AHB3RSTR;RCC/APB1RSTR1;RCC/APB1RSTR2;RCC/APB2RSTR;RCC/AHB1ENR;RCC/AHB2ENR;RCC/AHB3ENR;RCC/APB1ENR1;RCC/APB1ENR2;RCC/APB2ENR;RCC/AHB1SMENR;RCC/AHB2SMENR;RCC/AHB3SMENR;RCC/APB1SMENR1;RCC/APB1SMENR2;RCC/APB2SMENR;RCC/CCIPR;RCC/BDCR;RCC/CSR;RCC/CRRCR;SPI1/CR1;SPI1/CR2;SPI1/SR;SPI1/DR;SPI1/CRCPR;SPI1/RXCRCR;SPI1/TXCRCR" binaryNodes="" asciiNodes="" openNodes="CPU - Current Context;GPIOB;GPIOB/MODER;GPIOB/AFRL;RCC;RCC/APB2ENR;SPI1;SPI1/CR1;SPI1/CR2;SPI1/SR;SPI1/DR" name="lab6_ek_Debug" decimalNodes="" octalNodes="" unsignedNodes=""/>
  </Register1>
  <Register2>
   <RegisterWindow invisibleNodes="" visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;CPU/r0;CPU/r1;CPU/r2;CPU/r3;CPU/r4;CPU/r5;CPU/r6;CPU/r7;CPU/r8;CPU/r9;CPU/r10;CPU/r11;CPU/r12;CPU/sp(r13);CPU/lr(r14);CPU/pc(r15);CPU/xpsr;CPU/MSP;CPU/PSP;CPU/PRIMASK;CPU/BASEPRI;CPU/FAULTMASK;CPU/CONTROL;CPU/internal" binaryNodes="" asciiNodes="" openNodes="CPU - Current Context" name="lab6_ek_Debug" decimalNodes="" octalNodes="" unsignedNodes=""/>
@@ -58,20 +58,20 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="18" y="103" useTextEdit="1" path="main.c" left="0" selected="1" top="89" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="19" y="12" useTextEdit="1" path="main.h" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="14" y="103" useTextEdit="1" folds0="33,39,55" path="main.c" left="0" top="39" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="8" y="14" useTextEdit="1" path="main.h" left="0" top="0" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="21" useTextEdit="1" path="STM32L432KC.h" left="0" top="0" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="20" y="15" useTextEdit="1" path="STM32L432KC_SPI.h" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="33" y="22" useTextEdit="1" path="STM32L432KC_SPI.c" left="0" top="16" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="31" y="95" useTextEdit="1" path="STM32L432KC_GPIO.c" left="0" top="54" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="121" useTextEdit="1" path="STM32L432KC_GPIO.c" left="0" top="92" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="83" useTextEdit="1" path="STM32L432KC_GPIO.h" left="0" top="42" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="21" y="453" useTextEdit="1" path="STM32L4xx/Device/Include/stm32l432xx.h" left="0" top="412" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="8" y="18" useTextEdit="1" path="DS1722.h" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="STM32L432KC_TIM.h" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="STM32L432KC_TIM.c" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="37" y="18" useTextEdit="1" path="DS1722.c" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="24" y="7262" useTextEdit="1" path="STM32L4xx/Device/Include/stm32l432xx.h" left="0" top="7251" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="20" y="19" useTextEdit="1" path="DS1722.h" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="48" y="16" useTextEdit="1" path="STM32L432KC_TIM.h" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="16" y="18" useTextEdit="1" path="STM32L432KC_TIM.c" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="25" y="53" useTextEdit="1" path="DS1722.c" left="0" selected="1" top="33" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="STM32L432KC_USART.h" left="0" top="0" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="STM32L432KC_USART.c" left="0" top="45" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="2" y="66" useTextEdit="1" path="STM32L432KC_SPI.c" left="0" top="40" codecName="Default"/>
  </Files>
  <EMStudioWindow activeProject="lab6_ek" fileDialogDefaultFilter="*.c" autoConnectTarget="J-Link" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="C:/Users/ekendrick/Documents/tutorial-esp8266-click-webserver-main/SEGGER_proj" debugSearchPath="" autoConnectCapabilities="3711"/>
 </session>

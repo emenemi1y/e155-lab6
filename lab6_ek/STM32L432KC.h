@@ -26,4 +26,7 @@
 #define MSI_FREQ 4000000  // HSI clock is 4 MHz
 
 
+int _write(int file, char *ptr, int len);
+
+
 #endif

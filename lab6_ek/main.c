@@ -1,8 +1,9 @@
  /*
-File: Lab_6_JHB.c
-Author: Josh Brake
-Email: jbrake@hmc.edu
-Date: 9/14/19
+File: lab6_ek.c
+Author: Emily Kendrick
+Email: ekendrick@hmc.edu
+Date: 10/22/25
+Adapted from Prof Brake's Lab 6 starter code
 */
 
 
@@ -10,6 +11,14 @@ Date: 9/14/19
 #include <stdlib.h>
 #include <stdio.h>
 #include "main.h"
+
+int _write(int file, char *ptr, int len) {
+  int i = 0;
+  for (i = 0; i < len; i++){
+    ITM_SendChar((*ptr++));
+  }
+  return len;
+}
 
 /////////////////////////////////////////////////////////////////
 // Provided Constants and Functions
@@ -38,7 +47,7 @@ int inString(char request[], char des[]) {
 
 int updateLEDStatus(char request[])
 {
-        int led_status = 0;
+        int led_status = 2;
 	// The request has been received. now process to determine whether to turn the LED on or off
 	if (inString(request, "ledoff")==1) {
 		digitalWrite(LED_PIN, PIO_LOW);
@@ -96,59 +105,53 @@ int main(void) {
   initTIM(TIM15);
 
   pinMode(LED_PIN, GPIO_OUTPUT);
-  digitalWrite(LED_PIN,0);
+  digitalWrite(LED_PIN, 0);
   
   USART_TypeDef * USART = initUSART(USART1_ID, 125000);
 
   // SPI initialization code 
   initSPI(0b100, 0, CPHA); 
-  //tempSetup();
+  tempSetup();
 
   int res_status = 9;
   int led_status_init = 0;
 
   while(1) {
-
     /* Wait for ESP8266 to send a request.
     Requests take the form of '/REQ:<tag>\n', with TAG begin <= 10 characters.
     Therefore the request[] array must be able to contain 18 characters.
     */
-
+    
     // Receive web request from the ESP
     
     char request[BUFF_LEN] = "                  "; // initialize to known value
     int charIndex = 0;
-    /*
+    
     // Keep going until you get end of line character
     while(inString(request, "\n") == -1) {
       // Wait for a complete request to be transmitted before processing
       while(!(USART->ISR & USART_ISR_RXNE));
       request[charIndex++] = readChar(USART);
     } 
-    */
-
-    // Read temperature
-    volatile int sensor_reading = tempRead();
-    //float temp = convertTemp(sensor_reading);
-
+    
   
     // Update string with current LED state
-    //int led_status = updateLEDStatus(request);
+    int led_status = updateLEDStatus(request);
     
-    /*
+    
     if(led_status == 2)
       led_status = led_status_init;
     else
       led_status_init = led_status;
-    */
-    /*
+    
+    
     char ledStatusStr[20];
     if (led_status == 1)
       sprintf(ledStatusStr,"LED is on!");
     else if (led_status == 0)
       sprintf(ledStatusStr,"LED is off!");
-    */
-    /*
+    
+    
     // Update string with current resolution state
     int new_res_status = updateResolution(request);
     if (new_res_status == 0) 
@@ -156,24 +159,37 @@ int main(void) {
     else 
         res_status = new_res_status;
 
-    char resStatusStr[22];
+    volatile int sensor_reading = tempRead();
+    float temp = convertTemp(sensor_reading);
 
-    if (res_status == 8) sprintf(resStatusStr, "Resolution: 1.0°C");
-    else if (res_status == 9) sprintf(resStatusStr, "Resolution: 0.5°C");
-    else if (res_status == 10) sprintf(resStatusStr, "Resolution: 0.25°C");
-    else if (res_status == 11) sprintf(resStatusStr, "Resolution: 0.125°C");
-    else if (res_status == 12) sprintf(resStatusStr, "Resolution: 0.0625°C");
-    */
-    
-    // Temperature string
+    char resStatusStr[28];
     char tempString[20];
-    //sprintf(tempString, "Temp: %.4f°C", temp);
+    if (res_status == 8) {
+        sprintf(resStatusStr, "Resolution: 1.0 deg C");
+        sprintf(tempString, "Temp: %d deg C", (int) temp);
+    }
+    else if (res_status == 9) {   
+        sprintf(resStatusStr, "Resolution: 0.5 deg C");
+        sprintf(tempString, "Temp: %.1f deg C", temp);
+    }
+    else if (res_status == 10) {
+        sprintf(resStatusStr, "Resolution: 0.25 deg C");
+        sprintf(tempString, "Temp: %.2f deg C", temp);
+    }
+    else if (res_status == 11) {
+        sprintf(resStatusStr, "Resolution: 0.125 deg C");
+        sprintf(tempString, "Temp: %.3f deg C", temp);
+    }
+    else if (res_status == 12) {
+        sprintf(resStatusStr, "Resolution: 0.0625 deg C");
+        sprintf(tempString, "Temp: %.4f deg C", temp);
+    }
     
-    /*
+    
     // finally, transmit the webpage over UART
     sendString(USART, webpageStart); // webpage header code
     sendString(USART, ledStr); // button for controlling LED
-    //sendString(USART, tempRes); // button for controlling resolution
+    sendString(USART, tempRes); // button for controlling resolution
 
     sendString(USART, "<h2>LED Status</h2>");
 
@@ -185,17 +201,17 @@ int main(void) {
     
     sendString(USART, "<h2>Temperature Resolution</h2>");
     sendString(USART, "<p>");
-    //sendString(USART, resStatusStr);
+    sendString(USART, resStatusStr);
     sendString(USART, "</p>");
     
 
     sendString(USART, "<h2>Temperature Measurement</h2>");
     sendString(USART, "<p>");
-    //sendString(USART, tempString);
+    sendString(USART, tempString);
     sendString(USART, "</p>");
 
   
     sendString(USART, webpageEnd);
-    */
+    
   }
 }

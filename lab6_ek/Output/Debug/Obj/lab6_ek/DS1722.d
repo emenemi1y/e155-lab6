@@ -17,4 +17,10 @@ Output/Debug/Obj/lab6_ek/DS1722.o: \
   C:\Users\ekendrick\Documents\GitHub\e155-lab6\lab6_ek\STM32L432KC_GPIO.h \
   C:\Users\ekendrick\Documents\GitHub\e155-lab6\lab6_ek\STM32L432KC_TIM.h \
   C:\Program\ Files\SEGGER\SEGGER\ Embedded\ Studio\ 8.24\include\math.h \
-  C:\Program\ Files\SEGGER\SEGGER\ Embedded\ Studio\ 8.24\include\__SEGGER_RTL_FP.h
+  C:\Program\ Files\SEGGER\SEGGER\ Embedded\ Studio\ 8.24\include\__SEGGER_RTL_FP.h \
+  C:\Users\ekendrick\Documents\GitHub\e155-lab6\lab6_ek\STM32L432KC.h \
+  C:\Program\ Files\SEGGER\SEGGER\ Embedded\ Studio\ 8.24\include\stdio.h \
+  C:\Program\ Files\SEGGER\SEGGER\ Embedded\ Studio\ 8.24\include\stdlib.h \
+  C:\Users\ekendrick\Documents\GitHub\e155-lab6\lab6_ek\STM32L432KC_RCC.h \
+  C:\Users\ekendrick\Documents\GitHub\e155-lab6\lab6_ek\STM32L432KC_FLASH.h \
+  C:\Users\ekendrick\Documents\GitHub\e155-lab6\lab6_ek\STM32L432KC_USART.h

@@ -9,6 +9,7 @@
 #include "STM32L432KC_SPI.h"
 #include "STM32L432KC_TIM.h"
 #include <math.h>
+#include "STM32L432KC.h"
 
 // Setup temperature sensor with 9-bit resolution
 void tempSetup(void){
@@ -19,7 +20,7 @@ void tempSetup(void){
   spiSendReceive(WRITE_ADR);
 
   // Send configuration register settings 
-  spiSendReceive(0b11100010);
+  spiSendReceive(0b11100110);
 
   // Disable CE
   digitalWrite(SPI_CE, PIO_LOW);
@@ -42,16 +43,6 @@ void setResolution(int res) {
 
 
 int tempRead(void){
-  digitalWrite(SPI_CE, PIO_HIGH);
-
-  // Write "write address" to temperature sensor
-  spiSendReceive(WRITE_ADR);
-
-  // Send configuration register settings 
-  spiSendReceive(0b11100010);
-
-  digitalWrite(SPI_CE, PIO_LOW);
-  delay_micros(TIM15, 5);
   
   // Read MSB: 
   // Set CE high
@@ -63,7 +54,7 @@ int tempRead(void){
   // Disable CE 
   digitalWrite(SPI_CE, PIO_LOW);
   
-  delay_micros(TIM15, 5);
+  delay_micros(TIM15, 3);
 
   // Read LSB:
   // Set CE high
@@ -74,8 +65,10 @@ int tempRead(void){
   int LSB = spiSendReceive(0x00);
   // Disable CE
   digitalWrite(SPI_CE, PIO_LOW);  
+
   
-  return (LSB | (MSB << 8));
+  return ((MSB << 8) | (LSB));
+
 
 }
 
@@ -83,9 +76,9 @@ float convertTemp(int bits) {
   float temp = 0;
   // Iterate through each bit from the temperature sensor output 
   for (int i = 0; i < 16; i++) {
-    int bit = ((bits >> i) & 1);
-    if (i == 16 && bit) temp -= pow(2, -7);
-    else if (bit) temp += pow(2, (i - 9));
+    int bit = (bits & (1 << i));
+    if (i == 16 && bit) temp -= pow(2, 7);
+    else if (bit) temp += pow(2, (i - 8));
   }
   
   return temp;

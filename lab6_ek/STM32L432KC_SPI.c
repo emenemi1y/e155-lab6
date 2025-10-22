@@ -20,18 +20,17 @@ void initSPI(int br, int cpol, int cpha){
 
   // Enable system clock for SPI1
   RCC->APB2ENR |= RCC_APB2ENR_SPI1EN;
-
+  
   // Configure GPIO pins for SPI3
   // Set to alternate function mode
   pinMode(SPI_SCK, GPIO_ALT);     // SPI1_SCK
   pinMode(SPI_MISO, GPIO_ALT);    // SPI1_MISO
   pinMode(SPI_MOSI, GPIO_ALT);    // SPI1_MOSI
   pinMode(SPI_CE, GPIO_OUTPUT);   // Manual CS
-
+  
+  
   // Set output speed type to high for SCK
   GPIOB->OSPEEDR |= (0b11 << GPIO_OSPEEDR_OSPEED3_Pos);
-  GPIOB->OSPEEDR |= (0b11 << GPIO_OSPEEDR_OSPEED4_Pos);
-  GPIOB->OSPEEDR |= (0b11 << GPIO_OSPEEDR_OSPEED5_Pos);
 
   // Set to AF05 for SPI alternate functions 
   GPIOB->AFR[0] |= _VAL2FLD(GPIO_AFRL_AFSEL3, 5);
@@ -53,7 +52,7 @@ void initSPI(int br, int cpol, int cpha){
 
   // Enable SPI
   SPI1->CR1 |= SPI_CR1_SPE;
-
+  
 }
 
 

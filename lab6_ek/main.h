@@ -15,4 +15,6 @@
 #define CPHA 1 // CPHA must be set to 1
 #define DELAY_TIM TIM15
 
+
+
 #endif // MAIN_H

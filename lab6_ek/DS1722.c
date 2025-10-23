@@ -49,6 +49,7 @@ int tempRead(void){
   digitalWrite(SPI_CE, PIO_HIGH);
   // Write the MSB address to the temperature sensor and ignore returned value
   spiSendReceive(TEMP_MSB);
+  delay_micros(TIM15, 2);
   // Read returned temperature result
   int MSB = spiSendReceive(0x00);
   // Disable CE 
@@ -61,6 +62,7 @@ int tempRead(void){
   digitalWrite(SPI_CE, PIO_HIGH);
   // Write the LSB address to the temperature sensor and ignore returned value
   spiSendReceive(TEMP_LSB);
+  delay_micros(TIM15, 2);
   // Read returned temperature result
   int LSB = spiSendReceive(0x00);
   // Disable CE

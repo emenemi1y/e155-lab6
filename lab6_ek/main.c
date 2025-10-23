@@ -3,7 +3,7 @@ File: lab6_ek.c
 Author: Emily Kendrick
 Email: ekendrick@hmc.edu
 Date: 10/22/25
-Adapted from Prof Brake's Lab 6 starter code
+Adapted from the Lab 6 starter code
 */
 
 

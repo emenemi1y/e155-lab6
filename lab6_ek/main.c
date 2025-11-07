@@ -124,7 +124,7 @@ int main(void) {
   USART_TypeDef * USART = initUSART(USART1_ID, 125000);
 
   // SPI initialization code 
-  initSPI(0b100, 0, CPHA); 
+  initSPI(0b000, 0, CPHA); 
   tempSetup();
   
   // Initial resolution and LED statuses upon boot-up
@@ -169,9 +169,11 @@ int main(void) {
         new_res_status = res_status;
     else 
         res_status = new_res_status;
-
+    
+    // Get temperature, convert temperature
     volatile int sensor_reading = tempRead();
-    float temp = convertTemp(sensor_reading);
+    delay_micros(TIM15, 5);
+    volatile float temp = convertTemp(sensor_reading);
     
     // Resolution status string
     char resStatusStr[28];

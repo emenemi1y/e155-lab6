@@ -47,11 +47,13 @@ int tempRead(void){
   // Read MSB: 
   // Set CE high
   digitalWrite(SPI_CE, PIO_HIGH);
+  delay_micros(TIM15,3);
   // Write the MSB address to the temperature sensor and ignore returned value
   spiSendReceive(TEMP_MSB);
-  delay_micros(TIM15, 2);
+  //delay_micros(TIM15, 3);
   // Read returned temperature result
-  int MSB = spiSendReceive(0x00);
+  volatile int16_t MSB = spiSendReceive(0x00);
+  delay_micros(TIM15, 3);
   // Disable CE 
   digitalWrite(SPI_CE, PIO_LOW);
   
@@ -60,11 +62,13 @@ int tempRead(void){
   // Read LSB:
   // Set CE high
   digitalWrite(SPI_CE, PIO_HIGH);
+  delay_micros(TIM15,3);
   // Write the LSB address to the temperature sensor and ignore returned value
   spiSendReceive(TEMP_LSB);
-  delay_micros(TIM15, 2);
+  //delay_micros(TIM15, 3);
   // Read returned temperature result
-  int LSB = spiSendReceive(0x00);
+  volatile int16_t LSB = spiSendReceive(0x00);
+  delay_micros(TIM15,3);
   // Disable CE
   digitalWrite(SPI_CE, PIO_LOW);  
  
@@ -83,4 +87,5 @@ float convertTemp(int bits) {
   }
   
   return temp;
+  
 }
